@@ -78,7 +78,7 @@ inline void charsInTree(FTree tree, std::vector<char>& res) {
     }
 }
 
-inline std::vector<char> charsInArray(int array[]) {
+inline std::vector<char> charsInArray(const int array[]) {
     std::vector<char> res;
     for(int i = 0 ; i < 26 ; ++i) {
         if (array[i] != 0) {
@@ -90,4 +90,16 @@ inline std::vector<char> charsInArray(int array[]) {
 
 inline bool hasDuplicates(std::vector<char>& vec) {
 //    auto it = std::unique(vec.front(),vec.end());
+}
+
+inline int nbLeafs(FTree tree) {
+    if (empty(tree)) {
+        return 0;
+    }
+    else if (isLeaf(tree)) {
+        return 1;
+    }
+    else {
+        return nbLeafs(tree . lson()) + nbLeafs(tree.rson());
+    }
 }

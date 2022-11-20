@@ -2,7 +2,9 @@
 #include "PriorityQueue/PriorityQueue.h"
 #include "Tree/FTree.h"
 #include "Huffman/HData.h"
+#include "Huffman/HCompressor.h"
 #include "Utils/Utils.h"
+#include <sstream>
 
 using namespace Huffman;
 using namespace FrequencyTree;
@@ -25,7 +27,7 @@ int test() {
     return 0;
 }
 
-int miniMain() {
+int main() {
     FTree a('a',5);
     FTree b('b', 10);
     FTree c('c', 5);
@@ -35,17 +37,26 @@ int miniMain() {
     freq[1] = 10;
     freq[2] = 5;
     vector<FTree*> testVec {&a,&b,&c/*,&d*/};
+    string buf ;
+
 
     HData test;
     test.setLetterFrequ(freq);
     test.setFileHasBeenRead(true);
     test.init();
-    cout << test.tree;
+
+    cout << test.tree << endl;
 //    cout << *res;
-    return 0;
+    HCompressor testC(test);
+    testC.encodeSearch(test.tree,buf,' ');
+    for (auto& elem : testC.encodedPatterns) {
+        cout << elem.second << endl;
+    };
+    testC.encodedPatterns.find('b');
+return 0;
 }
 
-int main() {
+int mainMain() {
     HData test;
     int array[26];
     fillArrayWithRandValues(array);
@@ -67,6 +78,8 @@ int main() {
     }
     cout << endl;
 
-
+    cout << "Size test : \n" <<
+    ((treeChars.size() == nbLeafs(test.tree))? "Same size\n" : "Not the same size\n") <<
+    nbLeafs(test.tree) << endl << treeChars.size() << endl;
 }
 

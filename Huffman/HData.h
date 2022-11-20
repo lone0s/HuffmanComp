@@ -29,6 +29,9 @@ namespace Huffman {
         //Devrait eventuellement inclure la lecture du fichier
         inline void init() {initFrequencyTree();};
 
+        inline int* getArrayFqcy() {
+            return this -> letterFreq;
+        }
         const int *getLetterFreq() const;
         inline void setLetterFrequ(int test[26]) {
             for(size_t i = 0 ; i < 26 ; ++i) {
