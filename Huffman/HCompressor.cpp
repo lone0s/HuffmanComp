@@ -33,3 +33,7 @@ void Huffman::HCompressor::encodeSearch(FTree tree,std::string buffer,char toPus
         }
     }
 }
+
+//Fonction de décodage
+
+

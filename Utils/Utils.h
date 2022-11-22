@@ -103,3 +103,14 @@ inline int nbLeafs(FTree tree) {
         return nbLeafs(tree . lson()) + nbLeafs(tree.rson());
     }
 }
+
+inline int treeDepth(FTree tree) {
+    if (empty(tree)) {
+        return 0;
+    }
+    else {
+        int left = 1 + treeDepth(tree . lson());
+        int right = 1 + treeDepth(tree.rson());
+        return (left >= right) ? left : right;
+    }
+}
