@@ -16,8 +16,10 @@ namespace Huffman {
 
     public:
         std::unordered_map<char,std::string/*Lettre,Encodage binaire*/> encodedPatterns;
-        void encodeSearch(FTree tree,std::string buffer,char toPush);
-        HCompressor(const HData& h){this -> data = h;};
+        void initPatterns(FTree tree, std::string buffer, char toPush);
+        explicit HCompressor(const HData& h){this -> data = h;};
+        void decode(const std::string& inputFile, const std::string& outputFile) const;
+        void encode(const std::string& inputFile, const std::string& outputFile) const;
     };
 }
 

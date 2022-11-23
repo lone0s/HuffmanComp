@@ -48,7 +48,7 @@ int main() {
     cout << test.tree << endl;
 //    cout << *res;
     HCompressor testC(test);
-    testC.encodeSearch(test.tree,buf,' ');
+    testC.initPatterns(test.tree, buf, ' ');
     for (auto& elem : testC.encodedPatterns) {
         cout << elem.second << endl;
     };
