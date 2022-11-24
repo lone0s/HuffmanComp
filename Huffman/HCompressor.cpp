@@ -14,12 +14,20 @@ void Huffman::HCompressor::generateEncoding() {
     stringBuilder << "0";
 }
 
-//std::stringstream add(std::stringstream& buffer, int x) {
-//    switch (x) {
-//        case 0 :
-//            return (buffer << 0);
-//    }
-//}
+void Huffman::HCompressor::init(const std::string&inputFile) {
+    std::ifstream inputStream(inputFile);
+    if (inputStream.is_open()) {
+        char outputC;
+        std::string buffer;
+        FTree tree = this -> data.tree;
+        while (!inputStream.eof()) {
+            outputC = inputStream.get();
+            buffer = "";
+            initPatterns(tree,buffer,outputC);
+        }
+    }
+    inputStream.close();
+}
 
 void Huffman::HCompressor::initPatterns(FTree tree, std::string buffer, char toPush) {
     if (!empty(tree)) {
@@ -83,8 +91,3 @@ void HCompressor::decode(const std::string& inputFile, const std::string& output
         outputStream.close();
     }
 }
-
-
-//Fonction de décodage
-
-
